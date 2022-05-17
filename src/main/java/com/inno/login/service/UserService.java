@@ -46,4 +46,8 @@ public class UserService implements UserDetailsService {
         confirmationTokenService.SaveConfirmationToken(confirmationToken);
         return token;
     }
+
+    public int enableUser(String email) {
+        return userRepository.enableUser(email);
+    }
 }
