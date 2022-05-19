@@ -11,7 +11,7 @@ import java.util.Optional;
 public class ConfirmationTokenService {
     private final ConfirmationTokenRepository confirmationTokenRepository;
 
-    public void SaveConfirmationToken(ConfirmationToken token){
+    public void saveConfirmationToken(ConfirmationToken token){
         confirmationTokenRepository.save(token);
     }
 
@@ -19,7 +19,7 @@ public class ConfirmationTokenService {
         return confirmationTokenRepository.findByToken(token);
     }
 
-    public int setConfirmAt(String token) {
-        return confirmationTokenRepository.updateConfirmAt(token, LocalDateTime.now());
+    public int setConfirmedAt(String token) {
+        return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
     }
 }

@@ -40,8 +40,10 @@ public class RegistrationService {
 
     @Transactional
     public String confirmToken(String token){
-        ConfirmationToken confirmationToken = confirmationTokenService.getToken(token)
-                .orElseThrow(()->new IllegalStateException("token not found"));
+        ConfirmationToken confirmationToken = confirmationTokenService
+                .getToken(token)
+                .orElseThrow(()->
+                        new IllegalStateException("token not found"));
 
         if (confirmationToken.getConfirmAt() != null) {
             throw new IllegalStateException("email already confirmed");
@@ -52,7 +54,7 @@ public class RegistrationService {
         if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
         }
-        confirmationTokenService.setConfirmAt(token);
+        confirmationTokenService.setConfirmedAt(token);
         userService.enableUser(confirmationToken.getUser().getEmail());
         return "Confirmed";
     }

@@ -19,5 +19,5 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
     @Query("UPDATE ConfirmationToken c " +
             "SET c.confirmAt = ?2 " +
             "WHERE c.token = ?1")
-    int updateConfirmAt(String token, LocalDateTime confirmAt);
+    int updateConfirmedAt(String token, LocalDateTime confirmAt);
 }
