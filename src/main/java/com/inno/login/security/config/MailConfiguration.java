@@ -17,7 +17,7 @@ public class MailConfiguration {
         //mailProperties.put("mail.smtp.starttls.enable", false);
         //mailSender.setJavaMailProperties(mailProperties);
         mailSender.setHost("localhost");
-        mailSender.setPort(25);
+        mailSender.setPort(1025);
         mailSender.setProtocol("smtp");
         mailSender.setUsername("hello");
         mailSender.setPassword("hello");
